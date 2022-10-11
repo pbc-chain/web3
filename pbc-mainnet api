@@ -1,0 +1,282 @@
+Paiblock coin Mainnet API for Blockchain Wallet users to send and receive Paiblock coin payments
+The Blockchain Wallet API provides a simple interface Merchants can use to programmatically interact with their wallet.
+
+Installation
+To use this API, you will need to follow 3 simple steps:
+
+Sign up in paiblock.app
+Create a business WALLET
+Retrieve your API KEY and secret required for each query to be successful in Paiblock coin network
+Your application interacts with this service locally via HTTPS API calls.
+
+For all requests add the following key/value pairs to the header:
+
+x-api-key = Your puut key
+api-secret = Your puut secret
+Content-Type = application/json
+Generate Address
+Method: GET
+
+https://api.paiblockcoin.cash/mainnet/getnewaddress?account=$walletname
+
+$walletname = Name of your wallet
+{{
+"result": [
+{
+"identifier": "nn4B5po44gUsWbwEjMmPd"
+"address": "mqW2gchhZYxNQI3GZnyrnD1TbnkTv5xrDH"
+"qrcode": "iVBORw0KGgoAAAANSUhEUgAAAZA..."
+}
+]
+"id": "8a75e685-3622-48d6-8195-65a50832f9a3" 
+"error": null
+}}
+Get Network Info
+Method: GET
+
+https://api.paiblockcoin.cash/mainnet/getnetworkinfo
+
+{{
+"result": [
+{
+"node": "12"
+"chain": "mainnet"
+"forkHeight": "521173"
+"forkStatus": "Active"
+"networkName": "Paiblock coin"
+"thicker": "PBC"
+}
+]
+"id": "8a75e685-3622-48d6-3295-65a508a0f9a3" 
+"error": null
+}}
+Get Balance By address
+Method: GET
+
+https://api.paiblockcoin.cash/mainnet/getbalance/$address
+
+$address = Your PBC address
+{{
+"result": [
+{
+"balance": "123.00"
+"qrcode": "98h43ubed97a93gdw297b3e...."
+}
+]
+"id": "8a75e085-3622-48d6-8195-65a508a0f9a3" 
+"error": null
+}}
+Get Account By address
+Method: GET
+
+https://api.paiblockcoin.cash/mainnet/getaccount/$address
+
+$address = Your PBC address
+{{
+"result": "nameofwallet"
+"id": "8a75e085-3622-48d6-8195-65a508a0f9a3"
+"error": null
+}}
+Get Block Count
+Method: GET
+
+https://api.paiblockcoin.cash/mainnet/getblockcount
+
+{{
+"result": "521648"
+"id": "8a75e085-3622-48d6-8195-65a508a0f9a3"
+"error": null
+}}
+Get Block By Hash
+Method: GET
+
+https://api.paiblockcoin.cash/mainnet/getblock?hash=$hash
+
+$hash Block hash
+{{
+"result": [
+{
+"nextHash": "00000000018cf7c4fc429ddc5e06316e8c34d5458f606e83713984ee55efb7c5"
+"previousHash": "0000000001965655a870175b510326e6393114d293896ddb237709eecb381ab8"
+"tx": [
+"0be231ded88fed848221354f71f3&haacecfb41cafa41b60ab542d1284bcfa80"
+]
+"bits": "1b0ab860"
+"confirmations": 21662
+"version": 3
+"nonce": 3966321545
+"difficulty": 6113.217034843999
+"chainwork": "00000000000000000000000000000000000000000000000461065264d8a0f51b"
+"size": 308
+"merkleroot": "0be231ded88fed848221354f71f30baacecfb41cafa41b60ab542d1284bcfa80"
+"time": "Thu Jul 09 18:18:56 CEST 2015"
+"hash": "000000000001a7c0aaa2630fbb2c0e476aafffc60f82177375b2aaa22209f606"
+"height": 500000
+}
+]
+"id": "8a75e685-3622-48d6-8365-65a508a0f9a3" 
+"error": null
+}}
+Get Block Hash By Index
+Method: GET
+
+https://api.paiblockcoin.cash/mainnet/getblockhash?index=$index
+
+$index Index of block
+{{
+"result": "000000003f5c3a2ce79c82ac0a6ce43557cc1cb5bbbd7eb31dae2d3e4edd0b4f"
+"id": "8a75e085-3622-48d6-8195-65a508a0f9a3"
+"error": null
+}}
+Get Block By Height
+Method: GET
+
+https://api.paiblockcoin.cash/mainnet/getblockbyheight/$height
+
+$height Height of block
+{{
+"result": "000000003aa0a1bd0416548405e1577c9325f792a2b3c0d25de10ca81b2f4af7"
+"id": "8a75e085-3622-48d6-8195-65a508a0f9a3"
+"error": null
+}}
+Get Raw Transaction By Id
+Method: GET
+
+https://api.paiblockcoin.cash/mainnet/getrawtransaction?txid=$txid
+
+$txid ID of transaction
+{{
+"result": {
+{
+"vsize": 817
+"locktime": 521558
+"txid": "770920cb271dcab4fc701590e3661ac4ed94557b477a7f67950c97ae29a7fa1d"
+"confirmations": 91
+"version": 2
+"confirmations": 91
+"vout": [
+{
+"scriptPubKey": [
+{
+"addresses": [
+"mqW2gchhZYxNQYJ5Znyrn9ATbnkTv5xrDH"
+]
+"asm": "OP_DUP OP_HASH160 6d8481713448ef0829bb9c74f57f1321d7b6efff OP_EQUALVERIFY OP_CHECKSIG"
+"hex": "76a9146d8481713448ef0829bb9c74f57f1321d7b6efff88ac"
+"type": "pubkeyhash"
+"reqSigs": 1
+}
+]
+value": 50
+"n": 0
+}
+]
+"blockhash": "000000000e0cebb6487e9aee7e9c76fb23ee1bc8353c81d2c0d395e8a9e2cf3b"
+"size": 817
+"blocktime": "Thu Oct 04 15:13:40 CEST 2018"
+"vin": [
+{
+"sequence": 4294967294
+"scriptSig": 4294967294
+"txid": "43fac73200a119b3456bdd69061c3231b2cb1cbd96e55960c57434cd6a086303"
+"vout": 0
+}
+]
+"hex": "020000000503...
+"time": "Thu Oct 04 15:13:40 CEST 2018"
+"hash": "770920cb271dcab4fc701590e3661ac4ed94557b477a7f67950c97ae29a7fa1d"
+}
+}
+"id": "8a75e085-3622-48d6-8195-65a508a0f9a3" 
+"error": null
+}}
+Get Address Info By Address
+Method: GET
+
+https://api.paiblockcoin.cash/mainnet/getaddress/$address
+
+$address PBC address
+{{
+"result": {
+{
+"scriptPubKey": "76a9146d8481713448ef0829349c74f57f1321d7b6efff88ac"
+"address": "mqW2gchhZYxNQYJ5ZnyrnD1TLkkTv5xrDH"
+"hdmasterkeyid": "ba50c3919cd2b216d187e24a2d215e5841dfc743"
+"isscript": "false"
+"iscompressed": "true"
+"ismine": "true"
+"isvalid": "true"
+"iswatchonly": "false"
+"hdkeypath": "m/0'/0'/3"
+"account": "nameofwallet"
+"timestamp": "1537361331"
+"pubkey": "037a09ea8b2e684f3f341c00ff2d789d00604e509fa1a40dbf13eb532ecdc67b55"
+}
+}
+"id": "8a75e085-3622-48d6-8195-65a508a0f9a3" 
+"error": null
+}}
+Get Money Supply
+Method: GET
+
+https://api.paiblockcoin.cash/mainnet/getmoneysupply
+
+{{
+"result": {
+{
+"total_amount": "17019905.03251839"
+"bestblock": null
+"txouts": 6460335
+"hash_serialized": null
+"byte_serialized": 6460335
+"transactions": 1983646
+"height": 521648
+}
+}
+"id": "8a75e085-3622-48d6-8195-65a508a0f9a3" 
+"error": null
+}}
+Get Transactions By Account
+Method: GET
+
+https://api.paiblockcoin.cash/mainnet/gettransactions?account=$account
+
+$account PBC account
+{{
+"result": [
+{
+"amount": 0.0001
+"address": mqW2gchhZYxNQYJ5ZnyH6D1TbnkTv5xrDH
+"bip125-replaceable": "no"
+"txid": 73cf171abd3b2231424e77a9d5508f76d42661f90de75592a1d90ae71d8b0af4
+"label": "testwallet"
+"confirmations": 91
+"vout": 1
+"blockhash": "000000000e0cebb6487e9aee7e9c76fb23ee1bc8353c81d2c0d395e8a9e2cf3b"
+"walletconflicts": []
+"timereceived": 1538651442
+"blocktime": 1538658820
+"time": 1538651442
+"category": "receive"
+"blockindex": 9
+"account": "testwallet"
+}
+]
+"id": "8a75e085-3622-48d6-8195-65a508a0f9a3" 
+"error": null
+}}
+
+Send PBC Coins
+Method: POST
+
+https://api.paiblockcoin.cash/mainnet/sendcoins?identifier=$identifier&fromAddress=$fromAddress&toAddress=$toAddress&amountSent=$amountSent
+
+$identifier PBC account identifier
+$fromAddress from PBC address
+$toAddress to PBC address
+$amountSent amount
+{{
+"result": "0e2a4c9763f71ebff1503042ad9bb412fd68d6ec2cbfbbb647a5d9f441ea779d"
+"id": "8a75e085-3622-48d6-8195-65a508a0f9a3"
+"error": null
+}}
